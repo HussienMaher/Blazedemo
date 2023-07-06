@@ -1,19 +1,31 @@
 /// <reference types="Cypress" />
+import {faker} from "@faker-js/faker"
 import Confirmation from "./Confirmationpage"
 import Reservepage from "./Reservepage"
+import Reservepage2 from "./Reservepage2"
+import Reservepage3 from "./Reservepage3"
+import Reservepage4 from "./Reservepage4"
+import Reservepage5 from "./Reservepage5"
 import Homepage from "./homepage"
 import Purchasepage from "./purchase"
+import table from "./table"
 
+const num1 = faker.number.int({min:0,max:6})
+const num2 = faker.number.int({min:0,max:6})
 it('validate booking flight',()=>{
 const homepage= new Homepage()
-const reserve = new Reservepage
-const purchase =new Purchasepage
-const confirmation = new Confirmation
     homepage.visitwebsite()
-    .departurecity('Paris')
-    .destinationcity('New York')
+    .departurecity(num1)
+    .destinationcity(num2)
     .findflight()
+   
+})
+it('choose flight',()=>{
+    const reserve = new Reservepage
     reserve.choosethis()
+})
+it('purchase flight with valid data',()=>{
+    const purchase =new Purchasepage
     purchase.typename('hussein')
     .typeaddress('elnemas')
     .typecity('assuit')
@@ -26,9 +38,12 @@ const confirmation = new Confirmation
     .typenameoncard('husseinmaher')
     .checkrememberme()
     .purhcase()
-    confirmation.assertconfirmation()
-    .assertstatus()
-    .assertcardnumber()
-    //.assertexpiration()
-    .assertdate()
+})
+it('check flight data',()=>{
+    const confirmation = new Confirmation
+confirmation.assertconfirmation()
+.assertstatus()
+.assertcardnumber()
+//.assertexpiration()
+.assertdate()
 })

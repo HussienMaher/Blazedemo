@@ -40,7 +40,7 @@ assertamount(){
     return this
 }
 assertcardnumber(){
-     this.cardnumber.should('contain','450364')
+     this.cardnumber.should('contain','1111')
     return this
 }
 // assertexpiration(){

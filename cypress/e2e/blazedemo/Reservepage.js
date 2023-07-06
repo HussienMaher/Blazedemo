@@ -1,7 +1,7 @@
 import Purchasepage from "./purchase"
 
 class Reservepage{
-//elements
+elements
 get chooseflight(){
     return  cy.get('.btn-small').eq(2)
 }
@@ -12,5 +12,4 @@ get chooseflight(){
         return Purchasepage
     }
 }
-
 export default Reservepage
